@@ -5,7 +5,15 @@ namespace Personajes
         {
             Intelectual,
             Agresivo,
-            Habil
+            Habil,
+
+            Fuerte,
+            
+        }
+
+        public class ConstructorDeTipos
+        {
+
             
         }
     
