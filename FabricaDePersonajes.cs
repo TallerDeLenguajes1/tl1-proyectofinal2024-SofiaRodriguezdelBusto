@@ -1,17 +1,56 @@
 namespace Personajes
 {
+
     public class FabricaDePersonajes
     {
-        Dictionary<string, Personaje.Datos> datosPersonaje = new Dictionary<string, Personaje.Datos>(){
-            {"Gloss", new Personaje.Datos(1, TipoPersonaje.Agresivo,10,"Velvereen")},
-            {"Enobaria",  new Personaje.Datos(2, TipoPersonaje.Agresivo,12,"Wovey")},
-            {"Wiress",  new Personaje.Datos(3, TipoPersonaje.Intelectual,7,"Maysilee")},
-            {"Beetee",  new Personaje.Datos(3, TipoPersonaje.Intelectual,9,"Maysilee")},
-            {"Finnick",  new Personaje.Datos(4, TipoPersonaje.Habil,12,"Augustus")},
-            {"Johanna",  new Personaje.Datos(7, TipoPersonaje.Habil,10,"Glimmer")},
-            {"Katniss",  new Personaje.Datos(12, TipoPersonaje.Habil,12,"Haymitch")},
-            {"Peeta", new Personaje.Datos(12, TipoPersonaje.Fuerte,12,"Haymitch")}
-        };
+        public List<Personaje> GeneradorDePersonajes(List<string> Nombres)
+        {
+            List<Personaje> ListaDePersonajes = new List<Personaje>();
+            var semilla = Environment.TickCount;
+            var random = new Random(semilla); 
+            foreach (var nombre in Nombres)
+            {
+                Personaje personaje = new Personaje();
+                personaje.Nombre = nombre;
+                personaje.Distrito = random.Next(1,12);
+                personaje.Tipo = (TipoPersonaje)random.Next(1,4);
+                personaje.PuntuacionPrevia = random.Next(1,12);
+                switch (personaje.Tipo)
+                {
+                        case TipoPersonaje.Intelectual:
+                            personaje.Velocidad = random.Next(1,6);
+                            personaje.Armadura = random.Next(6,10);
+                            personaje.Destreza = random.Next(1,5);
+                            personaje.Fuerza = random.Next(1,5);
+                            break;
+                        case TipoPersonaje.Agresivo:
+                            personaje.Velocidad = random.Next(4,8);
+                            personaje.Armadura = random.Next(7,10);
+                            personaje.Destreza = random.Next(1,5);
+                            personaje.Fuerza = random.Next(5,10);
+                            break;
+                        case TipoPersonaje.Habil:
+                            personaje.Velocidad = random.Next(5,10);
+                            personaje.Armadura = random.Next(1,10);
+                            personaje.Destreza = random.Next(3,5);
+                            personaje.Fuerza = random.Next(5,10);
+                            break;
+                        case TipoPersonaje.Fuerte:
+                            personaje.Velocidad = random.Next(1,10);
+                            personaje.Armadura = random.Next(5,10);
+                            personaje.Destreza = random.Next(1,5);
+                            personaje.Fuerza = random.Next(8,10);
+                            break;
+
+                }
+                ListaDePersonajes.Add(personaje);
                 
+            }
+            return ListaDePersonajes;
+
+        }
+                    
+
+
     }
 }
