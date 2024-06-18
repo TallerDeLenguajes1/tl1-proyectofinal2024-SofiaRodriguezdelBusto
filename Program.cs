@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-using Personajes;
+using Juego;
 
 Console.ForegroundColor = ConsoleColor.Red;
 Console.WriteLine(@"

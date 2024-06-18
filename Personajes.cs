@@ -1,5 +1,5 @@
 
-namespace Personajes
+namespace Juego
 {
     public class Personaje
     {

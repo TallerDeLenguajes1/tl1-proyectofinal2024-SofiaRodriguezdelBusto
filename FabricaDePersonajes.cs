@@ -1,4 +1,4 @@
-namespace Personajes
+namespace Juego
 {
 
     public class FabricaDePersonajes
