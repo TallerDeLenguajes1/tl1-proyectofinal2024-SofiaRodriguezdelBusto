@@ -32,7 +32,14 @@ namespace Juego
         public int Salud{ get => salud; set => salud = value; }
         
 
-
+        public int Ataque()
+        {
+            return  Destreza * Fuerza * PuntuacionPrevia;
+        }
+        public int Defensa()
+        {
+            return Armadura * Velocidad;
+        }
     }
 
 }

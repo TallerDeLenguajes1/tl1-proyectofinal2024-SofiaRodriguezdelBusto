@@ -15,6 +15,7 @@ namespace Juego
                 personaje.Distrito = random.Next(1,12);
                 personaje.Tipo = (TipoPersonaje)random.Next(1,4);
                 personaje.PuntuacionPrevia = random.Next(1,12);
+                personaje.Salud = 100;
                 switch (personaje.Tipo)
                 {
                         case TipoPersonaje.Intelectual:
