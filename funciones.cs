@@ -59,7 +59,9 @@ namespace Juego
                     string nombre = Console.ReadLine();
                     ListadoDeNombres.Add(nombre);
                 }
-
+                Console.SetCursorPosition(1, 1);
+                Console.ReadKey();
+                Console.Clear();
                 return ListadoDeNombres;
                 
             }
@@ -78,14 +80,21 @@ namespace Juego
                 Console.WriteLine($"Armadura: {personaje.Armadura}");
                 Console.WriteLine($"Salud: {personaje.Salud}");
             }
+            Console.SetCursorPosition(1, 1);
+            Console.ReadKey();
+            Console.Clear();
         }  
 
         public void MostrarResultadoDeBatalla(HistorialDeBatallas batalla)
         {
+            Console.SetCursorPosition(Console.BufferWidth/3, 1);
             Console.WriteLine($"El ganador del enfrentamiento en la arena es {batalla.Ganador.Nombre} en {batalla.CantidadDeDisputas} disputas");
-            Console.WriteLine($"El capitolio anuncia la caida del tributo {batalla.Perdedor.Nombre}");
             MostrarLogoCapitolio();
-
+            Console.SetCursorPosition(Console.BufferWidth/3, Console.BufferHeight-3);
+            Console.WriteLine($"El capitolio anuncia la caida del tributo {batalla.Perdedor.Nombre}");
+            Console.SetCursorPosition(1, 1);
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public void MostrarLogoCapitolio()
@@ -111,6 +120,11 @@ namespace Juego
                
 
             ");
+        }
+
+        public void AnuncioGanador(Personaje ganador)
+        {
+            Console.WriteLine($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador}");
         }
     }
 

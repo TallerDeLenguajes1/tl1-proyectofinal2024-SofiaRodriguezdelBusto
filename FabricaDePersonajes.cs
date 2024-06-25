@@ -13,7 +13,7 @@ namespace Juego
                 Personaje personaje = new Personaje();
                 personaje.Nombre = nombre;
                 personaje.Distrito = random.Next(1,12);
-                personaje.Tipo = (TipoPersonaje)random.Next(1,5);
+                personaje.Tipo = (TipoPersonaje)random.Next(0,4);
                 personaje.PuntuacionPrevia = random.Next(1,13);
                 personaje.Salud = 100;
                 switch (personaje.Tipo)

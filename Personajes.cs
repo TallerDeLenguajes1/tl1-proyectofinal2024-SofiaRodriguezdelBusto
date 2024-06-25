@@ -58,10 +58,15 @@ namespace Juego
             if (danioProvocado>0)
             {
                 defensor.Salud -= danioProvocado;
+                if(defensor.Salud < 0)
+                {
+                    defensor.Salud = 0;
+                }
             }else
             {
                 danioProvocado = 0;
             }
+
             return danioProvocado;
         }   
 

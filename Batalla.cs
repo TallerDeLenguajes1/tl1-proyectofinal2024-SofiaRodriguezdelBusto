@@ -23,9 +23,11 @@ namespace Juego
                 aux = atacante;
                 atacante = defensor;
                 defensor = aux;
+                Console.ReadKey();
+                Console.Clear();
             }
             HistorialDeBatallas batalla;
-            if (personaje1.Salud < 0)
+            if (personaje1.Salud <= 0)
             {
                 personaje2.MejorarSalud();
                 batalla = new HistorialDeBatallas(personaje2, personaje1, contadorDisputas); 
@@ -34,6 +36,7 @@ namespace Juego
                 personaje1.MejorarSalud();
                 batalla = new HistorialDeBatallas(personaje1, personaje2, contadorDisputas);
             }
+
             return batalla;
         }
         
