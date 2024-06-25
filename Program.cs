@@ -17,3 +17,4 @@ ListadoDePersonajes = fabricaPersonajes.GeneradorDePersonajes(nombresPersonajes)
 
 interfaz.MostrarPersonajes(ListadoDePersonajes);
 
+interfaz.MostrarLogoCapitolio();

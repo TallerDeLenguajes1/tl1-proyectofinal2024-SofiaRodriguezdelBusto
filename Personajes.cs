@@ -40,6 +40,24 @@ namespace Juego
         {
             return Armadura * Velocidad;
         }
+        public int Disputa(Personaje atacante, Personaje defensor)
+        {
+            const int ajuste = 500;
+            var semilla = Environment.TickCount;
+            var random = new Random(semilla); 
+            int efectividad = random.Next(1,100);
+            int danioProvocado = (atacante.Ataque()*efectividad-defensor.Defensa())/ajuste;
+
+            if (danioProvocado>0)
+            {
+                defensor.Salud -= danioProvocado;
+            }else
+            {
+                danioProvocado = 0;
+            }
+            return danioProvocado;
+        }   
+        
     }
 
 }
