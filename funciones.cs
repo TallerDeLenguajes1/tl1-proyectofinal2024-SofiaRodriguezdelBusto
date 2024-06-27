@@ -68,6 +68,7 @@ namespace Juego
         public void MostrarPersonajes(List<Personaje> personajes)
         {
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Los tributos de las 74ma edición de los Juegos del Hambre son:");
             foreach (var personaje in personajes)
             {
                 Console.WriteLine($"-----{personaje.Nombre}-----");
@@ -124,7 +125,7 @@ namespace Juego
 
         public void AnuncioGanador(Personaje ganador)
         {
-            Console.WriteLine($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador}");
+            Console.WriteLine($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}");
         }
     }
 

@@ -1,16 +1,45 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-
+﻿
 using Juego;
 
 interfazGrafica interfaz = new interfazGrafica();
 
 interfaz.PresentacionDelJuego();
 
-List<string> nombresPersonajes = interfaz.IngresoJugadores();
+string nombreArchivo = "Personajes.json";
+PersonajesJson archivoPersonajes = new PersonajesJson();
 
-FabricaDePersonajes fabricaPersonajes = new FabricaDePersonajes();
-List<Personaje> ListadoDePersonajes = fabricaPersonajes.GeneradorDePersonajes(nombresPersonajes); 
+List<Personaje> ListadoDePersonajes;
+string control;
+int controla;
+if (!archivoPersonajes.Existe(nombreArchivo))
+{
+    List<string> nombresPersonajes = interfaz.IngresoJugadores();
+    FabricaDePersonajes fabricaPersonajes = new FabricaDePersonajes();
+    ListadoDePersonajes = fabricaPersonajes.GeneradorDePersonajes(nombresPersonajes); 
+    archivoPersonajes.GuardarPersonajes(ListadoDePersonajes, nombreArchivo);
+
+}else
+{
+    do
+    {
+        Console.WriteLine("¿Desea repetir los personajes de la partida anterior? Ingrese 1 si asi lo desea. Caso contrario, ingrese 0");
+        control = Console.ReadLine();
+        
+    } while ((!int.TryParse(control, out controla) )||( controla != 0 && controla != 1));
+    if(controla == 1)
+    {
+        ListadoDePersonajes = archivoPersonajes.LeerPersonajes(nombreArchivo);
+    }else
+    {
+        archivoPersonajes.EliminarArchivo(nombreArchivo);
+        List<string> nombresPersonajes = interfaz.IngresoJugadores();
+        FabricaDePersonajes fabricaPersonajes = new FabricaDePersonajes();
+        ListadoDePersonajes = fabricaPersonajes.GeneradorDePersonajes(nombresPersonajes);
+        archivoPersonajes.GuardarPersonajes(ListadoDePersonajes, nombreArchivo); 
+    }
+}
+
+
 
 interfaz.MostrarPersonajes(ListadoDePersonajes);
 
@@ -23,7 +52,7 @@ while (ListadoDePersonajes.Count >1)
     int indicePersonaje2;
     do
     {
-    indicePersonaje2 = random.Next(0, ListadoDePersonajes.Count);
+        indicePersonaje2 = random.Next(0, ListadoDePersonajes.Count);
     } while (indicePersonaje1 == indicePersonaje2);
 
     Batalla batalla = new Batalla();

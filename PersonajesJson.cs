@@ -6,37 +6,34 @@ namespace Juego
     {
         public void GuardarPersonajes(List<Personaje> ListadoDePersonajes, string nombreArchivo)
         {
-            FileStream MiArchivo;
-            if(!Existe(nombreArchivo))
-            {
-                MiArchivo = new FileStream(@"c:\Users\pc\TLI\tl1-proyectofinal2024-SofiaRodriguezdelBusto\json"+nombreArchivo, FileMode.Create);
-            }else
-            {
-                MiArchivo = new FileStream(@"c:\Users\pc\TLI\tl1-proyectofinal2024-SofiaRodriguezdelBusto\json"+nombreArchivo, FileMode.Open);
-            }
             string personajesJson = JsonSerializer.Serialize(ListadoDePersonajes);
-            using (StreamWriter StrWriter = new StreamWriter(MiArchivo))
+            
+            using(var archivo = new FileStream(nombreArchivo, FileMode.Create))
             {
-                StrWriter.WriteLine("{0}", personajesJson);
-                StrWriter.Close();
+                using (var strWriter = new StreamWriter(archivo))
+                {
+                    strWriter.WriteLine("{0}", personajesJson);
+                    strWriter.Close();
+                }
             }
         }
-        public List<Personaje>? LeerPersonajes(string nombreArchivo)
+        public List<Personaje> LeerPersonajes(string nombreArchivo)
         {
-            if (Existe(nombreArchivo))
+            string cadenaPersonajes;
+            using (var archivoOpen = new FileStream(nombreArchivo, FileMode.Open))
             {
-                FileStream MiArchivo = new FileStream(@"c:\Users\pc\TLI\tl1-proyectofinal2024-SofiaRodriguezdelBusto\json"+nombreArchivo, FileMode.Open);
-                List<Personaje> ListadoDePersonajes = JsonSerializer.Deserialize<List<Personaje>>(MiArchivo);
-                return ListadoDePersonajes;
-            }else
-            {
-                return null;
-                
+                using (var strReader = new StreamReader(archivoOpen))
+                {
+                    cadenaPersonajes = strReader.ReadToEnd();
+                    archivoOpen.Close();
+                }
             }
+            var listadoPersonajes= JsonSerializer.Deserialize<List<Personaje>>(cadenaPersonajes);
+            return listadoPersonajes;
         }
         public bool Existe(string nombreArchivo)
         {
-            string ruta = "json/"+nombreArchivo;
+            string ruta = nombreArchivo;
             if(File.Exists(ruta))
             {
                 return true;
@@ -44,6 +41,10 @@ namespace Juego
             {
                 return false;
             }
+        }
+        public void EliminarArchivo(string nombreArchivo)
+        {
+            File.Delete(nombreArchivo);
         }
 
     }
