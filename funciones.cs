@@ -86,6 +86,12 @@ namespace Juego
             Console.Clear();
         }  
 
+        public void DescripcionArena(Tiempo tiempoArena)
+        {
+            Console.WriteLine("La arena donde se llevará a cabo esta emocionante y despiadada competencia es volátil e impredecible.");
+            Console.WriteLine($"En el dia de hoy la arena presenta las siguientes condiciones: se esperan temperaturas entre {tiempoArena.TemperaturaMin[0]} ºC y {tiempoArena.TemperaturaMax[0]} ºC. Además, se esperan {tiempoArena.Lluvia[0]} mm de lluvia y {tiempoArena.Nieve[0]} cm de nieve. El viento soplará a una velocidad de {tiempoArena.VientoMax[0]} km/h.\nLa duración de la luz será de {(int)tiempoArena.DuracionDia[0]/3600} horas. Luego, deberán enfrentarse con los tributos en la más profunda oscuridad");
+            
+        }
         public void MostrarResultadoDeBatalla(HistorialDeBatallas batalla)
         {
             Console.SetCursorPosition(Console.BufferWidth/3, 1);

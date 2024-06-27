@@ -1,7 +1,9 @@
 ﻿
+using System.Text.Json;
 using Juego;
 
 interfazGrafica interfaz = new interfazGrafica();
+
 
 interfaz.PresentacionDelJuego();
 
@@ -43,6 +45,13 @@ if (!archivoPersonajes.Existe(nombreArchivo))
 
 interfaz.MostrarPersonajes(ListadoDePersonajes);
 
+var tiempoApi = await GetWeatherAsync();
+
+
+interfaz.DescripcionArena(tiempoApi);
+
+
+
 List<HistorialDeBatallas> HistorialJuego = new List<HistorialDeBatallas>();
 while (ListadoDePersonajes.Count >1)
 {
@@ -63,3 +72,26 @@ while (ListadoDePersonajes.Count >1)
 }
 
 interfaz.AnuncioGanador(ListadoDePersonajes[0]);
+
+
+
+static async Task<Tiempo> GetWeatherAsync()
+{
+    var url = "https://api.open-meteo.com/v1/forecast?latitude=-54&longitude=-70&daily=temperature_2m_max,temperature_2m_min,daylight_duration,rain_sum,snowfall_sum,wind_speed_10m_max&forecast_days=1";
+    try
+    {
+        HttpClient Client = new HttpClient();
+        HttpResponseMessage response = await Client.GetAsync(url);
+        response.EnsureSuccessStatusCode();
+        string responseBody = await response.Content.ReadAsStringAsync();
+        Tiempo tiempoArena = JsonSerializer.Deserialize<Tiempo>(responseBody);
+        return tiempoArena;
+    }
+    catch (HttpRequestException e)
+    {
+        Console.WriteLine("Problemas con el acceso a la API");
+        Console.WriteLine("Message: {0}", e.Message);
+        return null;
+    }
+
+}
