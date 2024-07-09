@@ -48,12 +48,8 @@ namespace Juego
                     archivoOpen.Close();
                 }
             }
-            Console.WriteLine(cadenaGanadores);
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true 
-            };
-            var HistorialDeGanadores = JsonSerializer.Deserialize<List<HistorialDeGanadores>>(cadenaGanadores, options);
+            
+            var HistorialDeGanadores = JsonSerializer.Deserialize<List<HistorialDeGanadores>>(cadenaGanadores);
 
             return HistorialDeGanadores;
 

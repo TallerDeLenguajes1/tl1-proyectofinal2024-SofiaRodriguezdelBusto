@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Juego
 {
     public class HistorialDeGanadores
@@ -7,6 +9,14 @@ namespace Juego
         int cantidadDeBatallasGanadas;
 
         int mejorAtaque;
+
+        [JsonConstructor]
+        public HistorialDeGanadores(string nombreGanador, int cantidadDeBatallasGanadas, int mejorAtaque)
+        {
+            NombreGanador = nombreGanador;
+            CantidadDeBatallasGanadas = cantidadDeBatallasGanadas;
+            MejorAtaque = mejorAtaque;
+        }
 
         public HistorialDeGanadores(Personaje vencedor)
         {
