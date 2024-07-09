@@ -35,7 +35,7 @@ namespace Juego
         public int Fuerza{ get => fuerza; set => fuerza = value; }
 
         public int Salud{ get => salud; set => salud = value; }
-        public int CantidadDeEnfrentamientosGanados { get => cantidadDeEnfrentamientos; set => cantidadDeEnfrentamientos = value; }
+        public int CantidadDeEnfrentamientosGanados { get => cantidadDeEnfrentamientosGanados; set => cantidadDeEnfrentamientosGanados = value; }
         public int MejorAtaque { get => mejorAtaque; set => mejorAtaque = value; }
 
         public void MejorarSalud()

@@ -63,10 +63,19 @@ while (ListadoDePersonajes.Count >1)
     Batalla batalla = new Batalla();
     Personaje tributoCaido = batalla.GeneradorDeBatalla(ListadoDePersonajes[indicePersonaje1],ListadoDePersonajes[indicePersonaje2]);
     ListadoDePersonajes.Remove(tributoCaido);
+    interfaz.MostrarTributoCaido(tributoCaido);
     
 }
+string nombreArchivo2 = "HistorialDeGanadores.json";
+HistorialJson archivoGanadores = new HistorialJson();
+archivoGanadores.GuardarGanador(ListadoDePersonajes[0], nombreArchivo2);
 
 interfaz.AnuncioGanador(ListadoDePersonajes[0]);
+if(archivoGanadores.Existe(nombreArchivo2))
+{
+    Console.WriteLine("El vencedor se une nuestro selecto grupo de vencedores");
+    interfaz.mostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
+}
 
 
 

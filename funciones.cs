@@ -109,12 +109,11 @@ namespace Juego
             Console.ReadKey();
             Console.Clear();
         }
-        public void MostrarResultadoDeBatalla(HistorialDeBatallas batalla)
+        public void MostrarTributoCaido(Personaje tributoCaido)
         {
             
-            CentrarTexto($"El ganador del enfrentamiento en la arena es {batalla.Ganador.Nombre} en {batalla.CantidadDeDisputas} disputas");
             MostrarLogoCapitolio();
-            CentrarTexto($"El capitolio anuncia la caida del tributo {batalla.Perdedor.Nombre}");
+            CentrarTexto($"El capitolio anuncia la caida del tributo {tributoCaido.Nombre}");
             Console.SetCursorPosition(1, 1);
             Console.ReadKey();
             Console.Clear();
@@ -145,6 +144,18 @@ namespace Juego
             ");
         }
 
+        public void mostrarGanadores(List<HistorialDeGanadores> ganadores)
+        {
+           int contador = 0;
+           foreach (var ganador in ganadores)
+           {
+                contador++;
+                Console.WriteLine($"Vencedor {contador}");
+                Console.WriteLine($"Nombre: {ganador.NombreGanador}");
+                Console.WriteLine($"Cantidad de enfretamientos ganados: {ganador.CantidadDeBatallasGanadas}");
+                Console.WriteLine($"Mejor ataque: {ganador.MejorAtaque}");
+           }
+        }
         public void AnuncioGanador(Personaje ganador)
         {
             CentrarTexto($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}");
