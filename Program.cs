@@ -47,12 +47,8 @@ interfaz.MostrarPersonajes(ListadoDePersonajes);
 
 var tiempoApi = await GetWeatherAsync();
 
-
 interfaz.DescripcionArena(tiempoApi);
 
-
-
-List<HistorialDeBatallas> HistorialJuego = new List<HistorialDeBatallas>();
 while (ListadoDePersonajes.Count >1)
 {
     var semilla = Environment.TickCount;
@@ -65,10 +61,9 @@ while (ListadoDePersonajes.Count >1)
     } while (indicePersonaje1 == indicePersonaje2);
 
     Batalla batalla = new Batalla();
-    HistorialDeBatallas nuevaBatalla = batalla.GeneradorDeBatalla(ListadoDePersonajes[indicePersonaje1],ListadoDePersonajes[indicePersonaje2]);
-    interfaz.MostrarResultadoDeBatalla(nuevaBatalla);
-    ListadoDePersonajes.Remove(nuevaBatalla.Perdedor);
-    HistorialJuego.Append(nuevaBatalla);
+    Personaje tributoCaido = batalla.GeneradorDeBatalla(ListadoDePersonajes[indicePersonaje1],ListadoDePersonajes[indicePersonaje2]);
+    ListadoDePersonajes.Remove(tributoCaido);
+    
 }
 
 interfaz.AnuncioGanador(ListadoDePersonajes[0]);

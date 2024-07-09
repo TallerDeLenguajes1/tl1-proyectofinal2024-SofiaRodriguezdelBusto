@@ -16,6 +16,9 @@ namespace Juego
         int destreza;
         int fuerza;
         int salud;
+
+        int cantidadDeEnfrentamientosGanados;
+        int mejorAtaque;
         public string Nombre{ get => nombre; set => nombre = value; }
 
         public int Distrito{ get => distrito; set => distrito = value; }
@@ -32,28 +35,23 @@ namespace Juego
         public int Fuerza{ get => fuerza; set => fuerza = value; }
 
         public int Salud{ get => salud; set => salud = value; }
-        
-
-        public int Ataque()
-        {
-            return  Destreza * Fuerza * PuntuacionPrevia;
-        }
-        public int Defensa()
-        {
-            return Armadura * Velocidad;
-        }
+        public int CantidadDeEnfrentamientosGanados { get => cantidadDeEnfrentamientos; set => cantidadDeEnfrentamientos = value; }
+        public int MejorAtaque { get => mejorAtaque; set => mejorAtaque = value; }
 
         public void MejorarSalud()
         {
             Salud += 10;
         }
-        public int Disputa(Personaje atacante, Personaje defensor)
+
+        public int Ataque(Personaje atacante, Personaje defensor)
         {
             const int ajuste = 500;
             var semilla = Environment.TickCount;
             var random = new Random(semilla); 
             int efectividad = random.Next(1,101);
-            int danioProvocado = (atacante.Ataque()*efectividad-defensor.Defensa())/ajuste;
+            int ataque =  atacante.Destreza*atacante.Fuerza*atacante.PuntuacionPrevia;
+            int defensa = defensor.Armadura*defensor.Velocidad;
+            int danioProvocado = (ataque*efectividad-defensa)/ajuste;
 
             if (danioProvocado>0)
             {

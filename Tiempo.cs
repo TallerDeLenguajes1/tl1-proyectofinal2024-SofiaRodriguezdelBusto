@@ -3,8 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace Juego
 {
-    
     public class Tiempo
+    {
+        [JsonPropertyName("daily")]
+        public DatosClima Datos{get;set;}
+    }
+    public class DatosClima
     {
 
         [JsonPropertyName("temperature_2m_max")]
@@ -20,7 +24,7 @@ namespace Juego
         public List<double> Lluvia { get; set; }
 
         [JsonPropertyName("snowfall_sum")]
-        public List<int> Nieve { get; set; }
+        public List<double> Nieve { get; set; }
 
         [JsonPropertyName("wind_speed_10m_max")]
         public List<double> VientoMax { get; set; }

@@ -2,22 +2,15 @@ namespace Juego
 {
     public class HistorialDeBatallas
     {
-        Personaje ganador;
-        Personaje perdedor;
-        int cantidadDeDisputas;
+        string ganador;
+    
+        int cantidadDeBatallasGanadas;
 
-        public HistorialDeBatallas(Personaje ganador, Personaje perdedor, int cantDisputas)
-        {
-            Ganador = ganador;
-            Perdedor = perdedor;
-            CantidadDeDisputas = cantDisputas;
-        }
+        int mejorAtaque;
 
         public Personaje Ganador { get => ganador; set => ganador = value; }
-        public Personaje Perdedor { get => perdedor; set => perdedor = value; }
-        public int CantidadDeDisputas { get => cantidadDeDisputas; set => cantidadDeDisputas = value; }
-
-
+        public int CantidadDeBatallasGanadas { get => cantidadDeBatallas; set => cantidadDeBatallas = value; }
+        public int MejorAtaque { get => mejorAtaque; set => mejorAtaque = value; }
     }   
 }
 

@@ -2,6 +2,18 @@ namespace Juego
 {
     class interfazGrafica
     {
+        public void CentrarTexto(string texto)
+        {
+            int consoleWidth = Console.WindowWidth;
+            string[] lines = texto.Split('\n');
+
+            foreach (var linea in lines)
+            {
+                int padding = (consoleWidth - linea.Length)/2;
+                Console.SetCursorPosition(padding, Console.CursorTop);
+                Console.WriteLine(linea);
+            }
+        }
         public void PresentacionDelJuego()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -17,8 +29,7 @@ namespace Juego
             Console.ReadKey();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(Console.BufferWidth/3, 1);
-            Console.WriteLine("¡Bienvenidos a la 74ma edición de los Juegos del Hambre!");
+            CentrarTexto("¡Bienvenidos a la 74ma edición de los Juegos del Hambre!");
             Console.WriteLine("En el corazón de Panem, donde la opulencia del Capitolio contrasta con la lucha diaria de los doce distritos, se celebra cada año un evento que pone a prueba el valor, la astucia y la resistencia de nuestros tributos. Este es un espectáculo sin igual, un recordatorio de la fuerza y el control del Capitolio");
             Console.WriteLine("Esta es tu oportunidad de adentrarte en el mundo de Panem con tus amigos y familiares. Sumerjanse en una competencia virtual en la arena, donde solo uno puede salir victorioso");
             Console.WriteLine("\n");
@@ -29,8 +40,7 @@ namespace Juego
             Console.WriteLine("4.El último tributo en sobrevivir será declarado ganador de la 74ma edición de los Juegos del Hambre!");
             Console.WriteLine("\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(Console.BufferWidth/3, 15);
-            Console.WriteLine("QUE LA SUERTE ESTE SIEMPRE DE SU LADO");
+            CentrarTexto("QUE LA SUERTE ESTE SIEMPRE DE SU LADO");
             Console.SetCursorPosition(1, 1);
             Console.ReadKey();
             Console.Clear();
@@ -88,17 +98,23 @@ namespace Juego
 
         public void DescripcionArena(Tiempo tiempoArena)
         {
-            Console.WriteLine("La arena donde se llevará a cabo esta emocionante y despiadada competencia es volátil e impredecible.");
-            Console.WriteLine($"En el dia de hoy la arena presenta las siguientes condiciones: se esperan temperaturas entre {tiempoArena.TemperaturaMin[0]} ºC y {tiempoArena.TemperaturaMax[0]} ºC. Además, se esperan {tiempoArena.Lluvia[0]} mm de lluvia y {tiempoArena.Nieve[0]} cm de nieve. El viento soplará a una velocidad de {tiempoArena.VientoMax[0]} km/h.\nLa duración de la luz será de {(int)tiempoArena.DuracionDia[0]/3600} horas. Luego, deberán enfrentarse con los tributos en la más profunda oscuridad");
-            
+            if (tiempoArena != null && tiempoArena.Datos != null)
+            {
+                Console.WriteLine("La arena donde se llevará a cabo esta emocionante y despiadada competencia es volátil e impredecible.");
+                Console.WriteLine($"En el dia de hoy la arena presenta las siguientes condiciones: se esperan temperaturas entre {tiempoArena.Datos.TemperaturaMin[0]} ºC y {tiempoArena.Datos.TemperaturaMax[0]} ºC. Además, se esperan {tiempoArena.Datos.Lluvia[0]} mm de lluvia y {tiempoArena.Datos.Nieve[0]} cm de nieve. El viento soplará a una velocidad de {tiempoArena.Datos.VientoMax[0]} km/h.\nLa duración de la luz será de {(int)tiempoArena.Datos.DuracionDia[0]/3600} horas. Luego, deberán enfrentarse con los tributos en la más profunda oscuridad");
+            }else
+            {
+                Console.WriteLine("La arena donde se llevará a cabo esta emocionante y despiadada competencia es volátil e impredecible.");
+            }
+            Console.ReadKey();
+            Console.Clear();
         }
         public void MostrarResultadoDeBatalla(HistorialDeBatallas batalla)
         {
-            Console.SetCursorPosition(Console.BufferWidth/3, 1);
-            Console.WriteLine($"El ganador del enfrentamiento en la arena es {batalla.Ganador.Nombre} en {batalla.CantidadDeDisputas} disputas");
+            
+            CentrarTexto($"El ganador del enfrentamiento en la arena es {batalla.Ganador.Nombre} en {batalla.CantidadDeDisputas} disputas");
             MostrarLogoCapitolio();
-            Console.SetCursorPosition(Console.BufferWidth/3, Console.BufferHeight-3);
-            Console.WriteLine($"El capitolio anuncia la caida del tributo {batalla.Perdedor.Nombre}");
+            CentrarTexto($"El capitolio anuncia la caida del tributo {batalla.Perdedor.Nombre}");
             Console.SetCursorPosition(1, 1);
             Console.ReadKey();
             Console.Clear();
@@ -131,7 +147,7 @@ namespace Juego
 
         public void AnuncioGanador(Personaje ganador)
         {
-            Console.WriteLine($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}");
+            CentrarTexto($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}");
         }
     }
 
