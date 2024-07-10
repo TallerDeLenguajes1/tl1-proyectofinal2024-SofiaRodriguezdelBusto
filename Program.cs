@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Juego;
 
+
 interfazGrafica interfaz = new interfazGrafica();
 
 
