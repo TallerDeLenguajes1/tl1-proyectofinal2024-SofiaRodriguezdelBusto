@@ -2,7 +2,6 @@ namespace Juego
 {
     public class DesarrolloJuego
     {
-        
         public List<string> IngresoJugadores()
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -111,7 +110,7 @@ namespace Juego
         public static void EjecutarJuego()
         {
             string TextoMenuPrincipal = "Elija la acción que desea ejecutar:"; 
-            string[] opcionesMenuPrincipal = ["Iniciar Juego", "Ver Historial de Ganadores", "Salir"];
+            string[] opcionesMenuPrincipal = ["Iniciar Juego", "Ver Historial de Ganadores", "Finalizar"];
             Menu menuPrincipal = new Menu(TextoMenuPrincipal, opcionesMenuPrincipal);
             int seleccion = menuPrincipal.MenuDisplay();
             switch (seleccion)
@@ -122,7 +121,7 @@ namespace Juego
                     List<Personaje> ListadoDePersonajes = desarrolloJuego.ObtenerPersonajes();
                     Console.WriteLine("Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
                     interfazGrafica.MostrarPersonajes(ListadoDePersonajes);
-                    //var tiempoApi = Api.CrearCondicionesClimaticasConApi(); 
+                    var tiempoApi = Api.CrearCondicionesClimaticasConApi(); 
                     //interfazGrafica.DescripcionArena(tiempoApi);
                     Personaje ganador = desarrolloJuego.DesarrolloDeLasBatallas(ListadoDePersonajes);
                     desarrolloJuego.AgregarGanadorAlHistorialDeGanadores(ganador);
@@ -135,9 +134,13 @@ namespace Juego
                     HistorialJson archivoGanadores = new HistorialJson();
                     if(archivoGanadores.Existe(nombreArchivo2))
                     {
-                        Console.WriteLine("Nuestros queridos tributos campeones de Panem son");
+                        interfazGrafica.CentrarTexto("Nuestros queridos tributos campeones de Panem son");
                         interfazGrafica.mostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
+                    }else
+                    {
+                        Console.WriteLine("No se han encontrado ganadores históricos del juego");
                     }
+                    Console.ReadKey();
                     EjecutarJuego();
                     break;
                 case 2:

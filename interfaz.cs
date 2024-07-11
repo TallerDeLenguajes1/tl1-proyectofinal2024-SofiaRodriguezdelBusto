@@ -1,19 +1,17 @@
+using System.Media;
+
 namespace Juego
 {
     class interfazGrafica
     {
         public static void CentrarTexto(string texto)
         {
-            int consoleWidth = Console.WindowWidth;
-            string[] lines = texto.Split('\n');
 
-            foreach (var linea in lines)
-            {
-                int padding = (consoleWidth - linea.Length)/2;
-                Console.SetCursorPosition(padding, Console.CursorTop);
-                Console.WriteLine(linea);
-            }
+            int padding = (Console.WindowWidth - texto.Length)/2;
+            Console.SetCursorPosition(padding, Console.CursorTop);
+            Console.WriteLine(texto);
         }
+        
 
         public static void EscribirTextoAnimado(string texto, bool centrado)
         {
@@ -38,8 +36,7 @@ namespace Juego
                                 |__/               |___/                                                                          
             ");
             Console.WriteLine("\n");
-            Console.SetCursorPosition(Console.BufferWidth/3, Console.BufferHeight/2);
-            Console.WriteLine("Ingrese una tecla para iniciar");
+            CentrarTexto("Ingrese una tecla para iniciar");
             Console.ReadKey();
             Console.Clear();
         }
@@ -66,19 +63,38 @@ namespace Juego
 
         public static void MostrarPersonajes(List<Personaje> personajes)
         {
+            int pos = 0;
+            int filas = 0;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Los tributos de las 74ma edición de los Juegos del Hambre son:");
             foreach (var personaje in personajes)
             {
+                
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 - 2 + filas);
                 Console.WriteLine($"-----{personaje.Nombre}-----");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 - 1 + filas);
                 Console.WriteLine($"Distrito: {personaje.Distrito}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + filas);
                 Console.WriteLine($"Tipo de personaje: {personaje.Tipo}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 1 + filas);
                 Console.WriteLine($"Puntuación previa: {personaje.PuntuacionPrevia}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 2 + filas);
                 Console.WriteLine($"Velocidad: {personaje.Velocidad}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 3 + filas);
                 Console.WriteLine($"Destreza: {personaje.Destreza}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 4 + filas);
                 Console.WriteLine($"Fuerza: {personaje.Fuerza}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 5 + filas);
                 Console.WriteLine($"Armadura: {personaje.Armadura}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 6 + filas);
                 Console.WriteLine($"Salud: {personaje.Salud}");
+
+                pos++;
+                if (pos == 3)
+                {
+                    filas += 9;
+                    pos = 0;
+                }
             }
             Console.ReadKey();
             Console.Clear();
@@ -96,7 +112,6 @@ namespace Juego
         }
         public static void MostrarTributoCaido(Personaje tributoCaido)
         {
-            
             MostrarLogoCapitolio();
             CentrarTexto($"El capitolio anuncia la caida del tributo {tributoCaido.Nombre}");
             Console.SetCursorPosition(1, 1);
@@ -133,19 +148,34 @@ namespace Juego
         {
            Console.WriteLine("\n");
            int contador = 0;
+           int pos = 0;
+           int filas = 0;
            foreach (var ganador in ganadores)
            {
                 contador++;
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 - 2 + filas);
                 Console.WriteLine($"Vencedor {contador}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 - 1 + filas);
                 Console.WriteLine($"Nombre: {ganador.NombreGanador}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + filas);
                 Console.WriteLine($"Cantidad de enfretamientos ganados: {ganador.CantidadDeBatallasGanadas}");
+                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 1 + filas);
                 Console.WriteLine($"Mejor ataque: {ganador.MejorAtaque}");
+                
+                pos++;
+                if (pos == 3)
+                {
+                    filas += 9;
+                    pos = 0;
+                }
            }
         }
         public static void AnuncioGanador(Personaje ganador)
         {
             EscribirTextoAnimado($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}", true);
+            Thread.Sleep(2000);
         }
+
     }
 
     

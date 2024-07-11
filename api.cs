@@ -25,9 +25,9 @@ namespace Juego
 
         }
 
-        double[] DatosClimaPredeterminado = [-1.2,6.8,21600, 1.4,0.5,40.2];
-        public static async Tiempo CrearCondicionesClimaticasConApi()
+        public static async Task<Tiempo> CrearCondicionesClimaticasConApi()
         {
+            double[] DatosClimaPredeterminado = [-1.2,6.8,21600, 1.4,0.5,40.2];
         
             var tiempoApi = await GetWeatherAsync();
             Tiempo tiempoArena;
