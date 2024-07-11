@@ -6,10 +6,13 @@ namespace Juego
     {
         public static void CentrarTexto(string texto)
         {
-
-            int padding = (Console.WindowWidth - texto.Length)/2;
-            Console.SetCursorPosition(padding, Console.CursorTop);
-            Console.WriteLine(texto);
+            string[] lineas = texto.Split("\n");
+            foreach (var linea in lineas)
+            {
+                int padding = (Console.WindowWidth - linea.Length)/2;
+                Console.SetCursorPosition(padding, Console.CursorTop);
+                Console.WriteLine(linea);
+            }
         }
         
 
@@ -26,15 +29,19 @@ namespace Juego
             }
 
         }
+            public static string [] ObtenerTituloAsciiTxt(string ruta)
+            {
+                string [] tituloAsciiArt = File.ReadAllLines(ruta);
+                return tituloAsciiArt;
+            }
         public static void MostrarInicioDelJuego()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(@"
-            | |     ___   ___     (_)  _  _   ___   __ _   ___   ___    __| |  ___  | |   | |_    __ _   _ __   | |__   _ _   ___ 
-            | |__  / _ \ (_-<     | | | || | / -_) / _` | / _ \ (_-<   / _` | / -_) | |   | ' \  / _` | | '  \  | '_ \ | '_| / -_)
-            |____| \___/ /__/    _/ |  \_,_| \___| \__, | \___/ /__/   \__,_| \___| |_|   |_||_| \__,_| |_|_|_| |_.__/ |_|   \___|
-                                |__/               |___/                                                                          
-            ");
+            string[] asciiArt = ObtenerTituloAsciiTxt("txt/TituloAscii.txt");
+            foreach (var linea in asciiArt)
+            {
+                CentrarTexto(linea);
+            }
             Console.WriteLine("\n");
             CentrarTexto("Ingrese una tecla para iniciar");
             Console.ReadKey();
@@ -135,15 +142,15 @@ namespace Juego
                                                         ███████████████ ████ ███████████████         
                                                         ███████████████  ███ ███████████████       
                                                         ████████████████████████████████████      
-                                                        ██████████████████████████████████       
+                                                         ██████████████████████████████████       
                                                                      ████  ████                 
                                                                        ██  ██                     
                                                              ████ █    ██████    █ █████        
-                                                               ██████████████████████                           
+                                                                █████████████████████                          
                                                                     ████████████                             
                
-
-            ");
+ 
+            ");  
         }
 
         public static void mostrarGanadores(List<HistorialDeGanadores> ganadores)
