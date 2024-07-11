@@ -2,7 +2,7 @@ namespace Juego
 {
     class interfazGrafica
     {
-        public void CentrarTexto(string texto)
+        public static void CentrarTexto(string texto)
         {
             int consoleWidth = Console.WindowWidth;
             string[] lines = texto.Split('\n');
@@ -15,7 +15,7 @@ namespace Juego
             }
         }
 
-        public void EscribirTextoAnimado(string texto, bool centrado)
+        public static void EscribirTextoAnimado(string texto, bool centrado)
         {
             if (centrado)
             {
@@ -28,7 +28,7 @@ namespace Juego
             }
 
         }
-        public void MostrarInicioDelJuego()
+        public static void MostrarInicioDelJuego()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(@"
@@ -44,7 +44,7 @@ namespace Juego
             Console.Clear();
         }
 
-        public void MostrarPresentacionEInstrucciones()
+        public static void MostrarPresentacionEInstrucciones()
         {
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
@@ -64,36 +64,7 @@ namespace Juego
             Console.Clear();
         }
 
-            public List<string> IngresoJugadores()
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                string jugadores;
-                int cantidadDeJugadores;
-                Console.WriteLine("\nIngrese la cantidad de jugadores: ");
-                do
-                {
-                    jugadores = Console.ReadLine();
-                    if(!int.TryParse(jugadores, out cantidadDeJugadores))
-                    {
-                        Console.WriteLine("\nDebe ingresar un cantidad válida");
-                    }
-                } while (!int.TryParse(jugadores, out cantidadDeJugadores));
-
-                List<string> ListadoDeNombres =  new List<string>();
-
-                for (int i = 0; i < cantidadDeJugadores; i++)
-                {
-                    Console.WriteLine($"\nIngrese el nombre del jugador {i+1}: ");
-                    string nombre = Console.ReadLine();
-                    ListadoDeNombres.Add(nombre);
-                }
-                Console.SetCursorPosition(1, 1);
-                Console.ReadKey();
-                Console.Clear();
-                return ListadoDeNombres;
-                
-            }
-        public void MostrarPersonajes(List<Personaje> personajes)
+        public static void MostrarPersonajes(List<Personaje> personajes)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Los tributos de las 74ma edición de los Juegos del Hambre son:");
@@ -113,20 +84,17 @@ namespace Juego
             Console.Clear();
         }  
 
-        public void DescripcionArena(Tiempo tiempoArena)
+        public static void DescripcionArena(Tiempo tiempoArena)
         {
             if (tiempoArena != null && tiempoArena.Datos != null)
             {
                 Console.WriteLine("La arena donde se llevará a cabo esta emocionante y despiadada competencia es volátil e impredecible.");
                 Console.WriteLine($"En el dia de hoy la arena presenta las siguientes condiciones: se esperan temperaturas entre {tiempoArena.Datos.TemperaturaMin[0]} ºC y {tiempoArena.Datos.TemperaturaMax[0]} ºC. Además, se esperan {tiempoArena.Datos.Lluvia[0]} mm de lluvia y {tiempoArena.Datos.Nieve[0]} cm de nieve. El viento soplará a una velocidad de {tiempoArena.Datos.VientoMax[0]} km/h.\nLa duración de la luz será de {(int)tiempoArena.Datos.DuracionDia[0]/3600} horas. Luego, deberán enfrentarse con los tributos en la más profunda oscuridad");
-            }else
-            {
-                Console.WriteLine("La arena donde se llevará a cabo esta emocionante y despiadada competencia es volátil e impredecible.");
             }
             Console.ReadKey();
             Console.Clear();
         }
-        public void MostrarTributoCaido(Personaje tributoCaido)
+        public static void MostrarTributoCaido(Personaje tributoCaido)
         {
             
             MostrarLogoCapitolio();
@@ -136,7 +104,7 @@ namespace Juego
             Console.Clear();
         }
 
-        public void MostrarLogoCapitolio()
+        public static void MostrarLogoCapitolio()
         {
             Console.WriteLine(@"
             
@@ -161,7 +129,7 @@ namespace Juego
             ");
         }
 
-        public void mostrarGanadores(List<HistorialDeGanadores> ganadores)
+        public static void mostrarGanadores(List<HistorialDeGanadores> ganadores)
         {
            Console.WriteLine("\n");
            int contador = 0;
@@ -174,7 +142,7 @@ namespace Juego
                 Console.WriteLine($"Mejor ataque: {ganador.MejorAtaque}");
            }
         }
-        public void AnuncioGanador(Personaje ganador)
+        public static void AnuncioGanador(Personaje ganador)
         {
             EscribirTextoAnimado($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}", true);
         }
