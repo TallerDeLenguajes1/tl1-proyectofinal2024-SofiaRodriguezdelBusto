@@ -69,6 +69,7 @@ namespace Juego
                     ListadoDePersonajes = CrearPersonajes(nombreArchivo);
                 }
             }
+            Console.Clear();
             return ListadoDePersonajes;
         }
         
@@ -145,7 +146,7 @@ namespace Juego
                     break;
                 case 2:
                     Console.Clear();
-                    Console.WriteLine("Los esperamos pronto en el universo de Panem!");
+                    interfazGrafica.EscribirTextoAnimado("Los esperamos pronto en el universo de Panem!", true);
                     Thread.Sleep(2000);
                     Console.Clear(); 
                     break;

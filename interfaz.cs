@@ -63,38 +63,40 @@ namespace Juego
 
         public static void MostrarPersonajes(List<Personaje> personajes)
         {
-            int pos = 0;
-            int filas = 0;
+            //Console.SetBufferSize(Console.WindowWidth, (personajes.Count/3+3)*9);
+            //Console.SetCursorPosition(1,1);
+            //int pos = 0;
+            //int filas = 0;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Los tributos de las 74ma edición de los Juegos del Hambre son:");
             foreach (var personaje in personajes)
             {
                 
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 - 2 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 1);
                 Console.WriteLine($"-----{personaje.Nombre}-----");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 - 1 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 2);
                 Console.WriteLine($"Distrito: {personaje.Distrito}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 3);
                 Console.WriteLine($"Tipo de personaje: {personaje.Tipo}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 1 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 4);
                 Console.WriteLine($"Puntuación previa: {personaje.PuntuacionPrevia}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 2 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 5);
                 Console.WriteLine($"Velocidad: {personaje.Velocidad}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 3 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 6);
                 Console.WriteLine($"Destreza: {personaje.Destreza}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 4 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 7);
                 Console.WriteLine($"Fuerza: {personaje.Fuerza}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 5 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 8);
                 Console.WriteLine($"Armadura: {personaje.Armadura}");
-                Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, Console.BufferHeight / 4 + 6 + filas);
+                //Console.SetCursorPosition(pos * Console.BufferWidth / 3 + 1, filas + 9);
                 Console.WriteLine($"Salud: {personaje.Salud}");
 
+                /*
                 pos++;
                 if (pos == 3)
                 {
                     filas += 9;
                     pos = 0;
-                }
+                }*/
             }
             Console.ReadKey();
             Console.Clear();
@@ -165,7 +167,7 @@ namespace Juego
                 pos++;
                 if (pos == 3)
                 {
-                    filas += 9;
+                    filas += 5;
                     pos = 0;
                 }
            }
