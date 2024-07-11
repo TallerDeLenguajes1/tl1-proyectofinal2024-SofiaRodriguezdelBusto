@@ -6,14 +6,14 @@ using Juego;
 interfazGrafica interfaz = new interfazGrafica();
 
 
-interfaz.PresentacionDelJuego();
+interfaz.MostrarInicioDelJuego();
+interfaz.MostrarPresentacionEInstrucciones();
 
 string nombreArchivo = "Personajes.json";
 PersonajesJson archivoPersonajes = new PersonajesJson();
 
 List<Personaje> ListadoDePersonajes;
-string control;
-int controla;
+
 if (!archivoPersonajes.Existe(nombreArchivo))
 {
     List<string> nombresPersonajes = interfaz.IngresoJugadores();
@@ -23,13 +23,14 @@ if (!archivoPersonajes.Existe(nombreArchivo))
 
 }else
 {
-    do
-    {
-        Console.WriteLine("¿Desea repetir los personajes de la partida anterior? Ingrese 1 si asi lo desea. Caso contrario, ingrese 0");
-        control = Console.ReadLine();
-        
-    } while ((!int.TryParse(control, out controla) )||( controla != 0 && controla != 1));
-    if(controla == 1)
+    Console.WriteLine("Los personajes cargados previamente son: ");
+    interfaz.MostrarPersonajes(archivoPersonajes.LeerPersonajes(nombreArchivo));
+    string textoMenu = "¿Desea repetir los personajes de la partida anterior?";
+    string[] opcionesMenu = ["Si", "No"];
+    Menu menuSeleccionPersonajes = new Menu(textoMenu, opcionesMenu);
+    
+    int eleccionMenu = menuSeleccionPersonajes.MenuDisplay();
+    if(eleccionMenu == 0)
     {
         ListadoDePersonajes = archivoPersonajes.LeerPersonajes(nombreArchivo);
     }else

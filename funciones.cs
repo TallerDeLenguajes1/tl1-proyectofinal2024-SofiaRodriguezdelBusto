@@ -14,7 +14,21 @@ namespace Juego
                 Console.WriteLine(linea);
             }
         }
-        public void PresentacionDelJuego()
+
+        public void EscribirTextoAnimado(string texto, bool centrado)
+        {
+            if (centrado)
+            {
+                Console.SetCursorPosition((Console.BufferWidth - texto.Length) / 2, Console.BufferHeight / 4);
+            }
+            foreach (char c in texto)
+            {
+                Console.Write(c);
+                Thread.Sleep(50);
+            }
+
+        }
+        public void MostrarInicioDelJuego()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(@"
@@ -28,6 +42,11 @@ namespace Juego
             Console.WriteLine("Ingrese una tecla para iniciar");
             Console.ReadKey();
             Console.Clear();
+        }
+
+        public void MostrarPresentacionEInstrucciones()
+        {
+            Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
             CentrarTexto("¡Bienvenidos a la 74ma edición de los Juegos del Hambre!");
             Console.WriteLine("En el corazón de Panem, donde la opulencia del Capitolio contrasta con la lucha diaria de los doce distritos, se celebra cada año un evento que pone a prueba el valor, la astucia y la resistencia de nuestros tributos. Este es un espectáculo sin igual, un recordatorio de la fuerza y el control del Capitolio");
@@ -41,7 +60,6 @@ namespace Juego
             Console.WriteLine("\n");
             Console.ForegroundColor = ConsoleColor.Red;
             CentrarTexto("QUE LA SUERTE ESTE SIEMPRE DE SU LADO");
-            Console.SetCursorPosition(1, 1);
             Console.ReadKey();
             Console.Clear();
         }
@@ -91,7 +109,6 @@ namespace Juego
                 Console.WriteLine($"Armadura: {personaje.Armadura}");
                 Console.WriteLine($"Salud: {personaje.Salud}");
             }
-            Console.SetCursorPosition(1, 1);
             Console.ReadKey();
             Console.Clear();
         }  
@@ -146,6 +163,7 @@ namespace Juego
 
         public void mostrarGanadores(List<HistorialDeGanadores> ganadores)
         {
+           Console.WriteLine("\n");
            int contador = 0;
            foreach (var ganador in ganadores)
            {
@@ -158,7 +176,7 @@ namespace Juego
         }
         public void AnuncioGanador(Personaje ganador)
         {
-            CentrarTexto($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}");
+            EscribirTextoAnimado($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}", true);
         }
     }
 
