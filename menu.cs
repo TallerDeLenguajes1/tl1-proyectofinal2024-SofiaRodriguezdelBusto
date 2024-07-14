@@ -16,6 +16,7 @@ namespace Juego
 
         private void MostrarOpciones()
         {
+            Console.ResetColor();
             Console.WriteLine(textoMenu);
             for (int i = 0; i < opciones.Length; i++)
             {

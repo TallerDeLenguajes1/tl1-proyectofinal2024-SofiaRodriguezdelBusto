@@ -135,18 +135,16 @@ namespace Juego
                     HistorialJson archivoGanadores = new HistorialJson();
                     if(archivoGanadores.Existe(nombreArchivo2))
                     {
-                        interfazGrafica.CentrarTexto("Nuestros queridos tributos campeones de Panem son");
                         interfazGrafica.mostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
                     }else
                     {
                         Console.WriteLine("No se han encontrado ganadores históricos del juego");
                     }
-                    Console.ReadKey();
                     EjecutarJuego();
                     break;
                 case 2:
                     Console.Clear();
-                    interfazGrafica.EscribirTextoAnimado("Los esperamos pronto en el universo de Panem!", true);
+                    Animacion.EscribirTextoAnimado("Los esperamos pronto en el universo de Panem!", true);
                     Thread.Sleep(2000);
                     Console.Clear(); 
                     break;

@@ -1,4 +1,6 @@
+
 using System.Media;
+using System.Runtime.InteropServices;
 
 namespace Juego
 {
@@ -9,44 +11,27 @@ namespace Juego
             string[] lineas = texto.Split("\n");
             foreach (var linea in lineas)
             {
-                int padding = (Console.WindowWidth - linea.Length)/2;
+                int padding = (Console.BufferWidth - linea.Length)/2;
                 Console.SetCursorPosition(padding, Console.CursorTop);
                 Console.WriteLine(linea);
             }
         }
         
 
-        public static void EscribirTextoAnimado(string texto, bool centrado)
-        {
-            if (centrado)
-            {
-                Console.SetCursorPosition((Console.BufferWidth - texto.Length) / 2, Console.BufferHeight / 4);
-            }
-            foreach (char c in texto)
-            {
-                Console.Write(c);
-                Thread.Sleep(50);
-            }
-
-        }
             public static string [] ObtenerTituloAsciiTxt(string ruta)
             {
                 string [] tituloAsciiArt = File.ReadAllLines(ruta);
                 return tituloAsciiArt;
             }
+    
         public static void MostrarInicioDelJuego()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            string[] asciiArt = ObtenerTituloAsciiTxt("txt/TituloAscii.txt");
-            foreach (var linea in asciiArt)
-            {
-                CentrarTexto(linea);
-            }
-            Console.WriteLine("\n");
-            CentrarTexto("Ingrese una tecla para iniciar");
-            Console.ReadKey();
+            string[] title = ObtenerTituloAsciiTxt("txt/TituloAscii.txt");
+            Animacion.EfectoTemblorTitulo(title);
             Console.Clear();
         }
+        
 
         public static void MostrarPresentacionEInstrucciones()
         {
@@ -121,8 +106,10 @@ namespace Juego
         }
         public static void MostrarTributoCaido(Personaje tributoCaido)
         {
+            SoundPlayer sonidoCanion = new SoundPlayer("audio/audioAnuncioCaido.wav");
             MostrarLogoCapitolio();
             CentrarTexto($"El capitolio anuncia la caida del tributo {tributoCaido.Nombre}");
+            sonidoCanion.PlaySync();
             Console.SetCursorPosition(1, 1);
             Console.ReadKey();
             Console.Clear();
@@ -133,21 +120,21 @@ namespace Juego
             Console.WriteLine(@"
             
                                                                
-                                                                     ██      ██                 
-                                                                 ██████      ██████                      
-                                                             ██████████      ███████████                
-                                                           ████████████      ████████████            
-                                                         ██████████████      ██████████████       
-                                                          █████████████      █████████████         
-                                                        ███████████████ ████ ███████████████         
-                                                        ███████████████  ███ ███████████████       
-                                                        ████████████████████████████████████      
-                                                         ██████████████████████████████████       
-                                                                     ████  ████                 
-                                                                       ██  ██                     
-                                                             ████ █    ██████    █ █████        
-                                                                █████████████████████                          
-                                                                    ████████████                             
+                                                                ██      ██                 
+                                                            ██████      ██████                      
+                                                        ██████████      ███████████                
+                                                      ████████████      ████████████            
+                                                    ██████████████      ██████████████       
+                                                     █████████████      █████████████         
+                                                   ███████████████ ████ ███████████████         
+                                                   ███████████████  ███ ███████████████       
+                                                   ████████████████████████████████████      
+                                                    ██████████████████████████████████       
+                                                                ████  ████                 
+                                                                  ██  ██                     
+                                                        ████ █    ██████    █ █████        
+                                                            █████████████████████                          
+                                                               ████████████                             
                
  
             ");  
@@ -155,7 +142,11 @@ namespace Juego
 
         public static void mostrarGanadores(List<HistorialDeGanadores> ganadores)
         {
+           SoundPlayer musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
            Console.WriteLine("\n");
+           musicaGanadores.PlayLooping();
+           Thread.Sleep(1000);
+           interfazGrafica.CentrarTexto("Nuestros queridos tributos campeones de Panem son");
            int contador = 0;
            int pos = 0;
            int filas = 0;
@@ -178,14 +169,24 @@ namespace Juego
                     pos = 0;
                 }
            }
+           Console.ReadKey();
+           musicaGanadores.Stop();
+           Console.Clear();
         }
         public static void AnuncioGanador(Personaje ganador)
         {
-            EscribirTextoAnimado($"El ganador de la 74ma Edición de los Juegos del Hambre es {ganador.Nombre}", true);
+            SoundPlayer musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
+            musicaGanadores.PlayLooping();
+            Thread.Sleep(1000);
+            Animacion.EscribirTextoAnimado($"El ganador de la 74ma Edición de los Juegos del Hambre es: {ganador.Nombre}", true);
             Thread.Sleep(2000);
+            musicaGanadores.Stop();
         }
+        
 
     }
+
+
 
     
 }
