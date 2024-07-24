@@ -12,14 +12,14 @@ namespace Juego
             do
             {
                 Console.Clear();
-                int offsetX = random.Next(-2, 3); // Genera un valor entre -2 y 2
+                int offsetX = random.Next(-2, 3); 
                 Console.SetCursorPosition((Console.BufferWidth-title[0].Length)/2 + offsetX, 2);
                 foreach (var line in title)
                 {
                     interfazGrafica.CentrarTexto(line);
                 }
                 interfazGrafica.CentrarTexto("Presione enter para iniciar");
-                Thread.Sleep(500); // Controla la velocidad del temblor
+                Thread.Sleep(500);
                 
             }while(!Console.KeyAvailable || Console.ReadKey(true).Key != ConsoleKey.Enter);
         }
@@ -27,11 +27,11 @@ namespace Juego
         {
             if (centrado)
             {
-                Console.SetCursorPosition((Console.BufferWidth - texto.Length) / 2, Console.BufferHeight / 4);
+                Console.SetCursorPosition((Console.BufferWidth - texto.Length) / 2, 2);
             }
             foreach (char c in texto)
             {
-                if(c == ':') Thread.Sleep(200);
+                if(c == ':') Thread.Sleep(500);
                 Console.Write(c);
                 Thread.Sleep(50);
                 

@@ -53,9 +53,8 @@ namespace Juego
 
             }else
             {
-        
-                Console.WriteLine("Los personajes cargados previamente son: ");
-                interfazGrafica.MostrarPersonajes(archivoPersonajes.LeerPersonajes(nombreArchivo));
+
+                interfazGrafica.MostrarPersonajes(archivoPersonajes.LeerPersonajes(nombreArchivo), "Los personajes cargados previamente son: ");
                 string textoMenu = "¿Desea repetir los personajes de la partida anterior?";
                 string[] opcionesMenu = ["Si", "No"];
                 Menu menuSeleccionPersonajes = new Menu(textoMenu, opcionesMenu);
@@ -120,10 +119,9 @@ namespace Juego
                     Console.Clear();
                     DesarrolloJuego desarrolloJuego = new DesarrolloJuego();
                     List<Personaje> ListadoDePersonajes = desarrolloJuego.ObtenerPersonajes();
-                    Console.WriteLine("Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
-                    interfazGrafica.MostrarPersonajes(ListadoDePersonajes);
+                    interfazGrafica.MostrarPersonajes(ListadoDePersonajes, "Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
                     var tiempoApi = Api.CrearCondicionesClimaticasConApi(); 
-                    //interfazGrafica.DescripcionArena(tiempoApi);
+                    interfazGrafica.DescripcionArena(tiempoApi);
                     Personaje ganador = desarrolloJuego.DesarrolloDeLasBatallas(ListadoDePersonajes);
                     desarrolloJuego.AgregarGanadorAlHistorialDeGanadores(ganador);
                     interfazGrafica.AnuncioGanador(ganador);

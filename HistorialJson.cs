@@ -6,7 +6,7 @@ namespace Juego
     {
         public bool Existe(string nombreArchivo)
         {
-            string ruta = nombreArchivo;
+            string ruta = "Data/"+nombreArchivo;
             if(File.Exists(ruta))
             {
                 return true;
@@ -16,9 +16,9 @@ namespace Juego
             }
 
         }
-
         public void GuardarGanador(Personaje ganador, string nombreArchivo)
         {
+            string ruta = "Data/"+nombreArchivo;
             HistorialDeGanadores informacionGanador = new HistorialDeGanadores(ganador);
             List<HistorialDeGanadores> historialGanadores = new List<HistorialDeGanadores>();
             if(Existe(nombreArchivo))
@@ -27,7 +27,7 @@ namespace Juego
             }
             historialGanadores.Add(informacionGanador);
             string historial = JsonSerializer.Serialize(historialGanadores);
-            using(var archivo = new FileStream(nombreArchivo, FileMode.OpenOrCreate))
+            using(var archivo = new FileStream(ruta, FileMode.OpenOrCreate))
             {
                 using (var strWriter = new StreamWriter(archivo))
                 {
@@ -39,19 +39,21 @@ namespace Juego
         }
         public List<HistorialDeGanadores> LeerGanadores(string nombreArchivo)
         {
+            string ruta = "Data/"+nombreArchivo;
             string cadenaGanadores;
-            using (var archivoOpen = new FileStream(nombreArchivo, FileMode.Open))
+            List<HistorialDeGanadores> historialGanadores;
+            using (var archivoOpen = new FileStream(ruta, FileMode.Open))
             {
                 using (var strReader = new StreamReader(archivoOpen))
                 {
-                    cadenaGanadores = strReader.ReadToEnd();
+                    cadenaGanadores =strReader.ReadToEnd();
                     archivoOpen.Close();
                 }
             }
-            
-            var HistorialDeGanadores = JsonSerializer.Deserialize<List<HistorialDeGanadores>>(cadenaGanadores);
+                
+            historialGanadores = JsonSerializer.Deserialize<List<HistorialDeGanadores>>(cadenaGanadores);
 
-            return HistorialDeGanadores;
+            return historialGanadores;
 
         }
     
