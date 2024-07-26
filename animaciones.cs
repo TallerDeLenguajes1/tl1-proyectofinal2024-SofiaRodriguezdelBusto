@@ -27,11 +27,15 @@ namespace Juego
         {
             if (centrado)
             {
-                Console.SetCursorPosition((Console.BufferWidth - texto.Length) / 2, 2);
+                Console.SetCursorPosition((Console.BufferWidth - texto.Length) / 2, Console.CursorTop);
             }
             foreach (char c in texto)
             {
-                if(c == ':') Thread.Sleep(500);
+                if(c == ':')
+                {
+                    Console.Write(c);
+                    Thread.Sleep(1000);
+                }
                 Console.Write(c);
                 Thread.Sleep(50);
                 
