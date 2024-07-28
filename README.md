@@ -6,6 +6,8 @@
 
 Este juego te invita a introducirte en la experiencia de los Juegos del Hambre junto con tus familiares y amigos. Este simulador te permite adentrarteen el mundo de Panem y sumergirte en una competencia virtual en la arena. Los tributos se enfrentan en feroces combates mano a mano, dónde solo uno puede salir victorioso. El último en sobrevivir será coronado como el **ganador de la 74ma edición de los Juegos del Hambre**.
 
+**Disclaimer: Se asegura el funcionamiento de programa solo en windows. (Leer sección Implementación ->Sonidos y música para más detalle).**
+
 ##Funcionamiento del Juego
 
 Una vez que se da inicio al juego, se deben generar los personajes. Se ingresa la cantidad de jugadores que desean jugar y sus respectivos nombres. A cada uno de ellos se les asignan características de manera aleatoria. En caso de existir, se podrán utilizar los últimos personajes cargados. Si no existen o no se desea repetirlos, se generarán nuevos personajes como se detalló anteriormente. 
@@ -27,6 +29,11 @@ Recursos usados: https://www.topster.es/texto-ascii/doom.html y https://www.asci
 ###Animaciones
 
 En la búsqueda de efectos para títulos para lograr una mejor presentación del juego por la consola, me encontré con recursos como este repositorio de GitHub: https://gist.github.com/SebastianCastilloDev/466e1daab2e45729bd9ab53c247aaa17 y este video de youtube https://www.youtube.com/watch?si=OfXtKADo11WrxUCU&v=45E-IJDVSJo&feature=youtu.be que mostraban ideas para generar efectos en los textos y así decidí implementar el efecto de temblor en el título, el efecto de máquina de escribir en los anuncios y utilizar una función para generar los bordes de la información de las batallas. 
+
+###Sonidos y música
+
+Para incorporar archivos de audio en el juego utilicé la clase SoundPlayer que se encuentra en el namespace System.Media. La clase SoundPlayer permite cargar y reproducir archivos de sonido (.wav) en aplicaciones .NET. Esta clase ofrece métodos para reproducir sonidos de forma sincrónica y asincrónica (en el caso de este proyecto se utiliza la reproducción de forma asíncronica). Para poder utilizar esta clase es necesario agregar al proyecto. Para poder utilizar la clase SoundPlayer se necesita agregar una referencia al ensamblado System.Windows.Extensions. Para realizar esto utilice el comando 'dotnet add package System.Windows.Extensions --version 8.0.0' que agrega el paquete NuGet System.Windows.Extensions a tu proyecto .NET. 
+Al usar este comando, el uso de SoundPlayer sólo se admite en windows. De manera que sólo se asegura el funcionamiento del juego para Windows.
 
 ###Menú
 

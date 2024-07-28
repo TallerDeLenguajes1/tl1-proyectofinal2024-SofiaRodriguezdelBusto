@@ -37,7 +37,7 @@ namespace Juego
                     break;
                 case 2:
                     Console.Clear();
-                    Animacion.EscribirTextoAnimado("Los esperamos pronto en el universo de Panem!", true);
+                    Animacion.EscribirTextoAnimado("¡Los esperamos pronto en el universo de Panem!", true);
                     Thread.Sleep(2000);
                     Console.Clear(); 
                     break;
