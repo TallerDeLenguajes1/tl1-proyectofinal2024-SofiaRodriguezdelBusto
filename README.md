@@ -26,7 +26,7 @@ En el juego utilicé una API de clima Open-Meteo https://open-meteo.com/ para ge
 Con el fin de agregar figura como el logo del Capitolio para hacer referencias a la película utilicé páginas generadoras de ASCII art para poder lograr una mejor presentación por consola. También, en el título del juego se utilizó ASCII art.
 Recursos usados: https://www.topster.es/texto-ascii/doom.html y https://www.asciiart.eu/image-to-ascii
 
-###Animaciones
+### Animaciones
 
 En la búsqueda de efectos para títulos para lograr una mejor presentación del juego por la consola, me encontré con recursos como este repositorio de GitHub: https://gist.github.com/SebastianCastilloDev/466e1daab2e45729bd9ab53c247aaa17 y este video de youtube https://www.youtube.com/watch?si=OfXtKADo11WrxUCU&v=45E-IJDVSJo&feature=youtu.be que mostraban ideas para generar efectos en los textos y así decidí implementar el efecto de temblor en el título, el efecto de máquina de escribir en los anuncios y utilizar una función para generar los bordes de la información de las batallas. 
 
