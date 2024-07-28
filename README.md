@@ -2,13 +2,13 @@
 
 ## Presentación del Juego
 
-### Bienvenido al Simulador de los Juegos del Hambre###
+### Bienvenido al Simulador de los Juegos del Hambre
 
 Este juego te invita a introducirte en la experiencia de los Juegos del Hambre junto con tus familiares y amigos. Este simulador te permite adentrarteen el mundo de Panem y sumergirte en una competencia virtual en la arena. Los tributos se enfrentan en feroces combates mano a mano, dónde solo uno puede salir victorioso. El último en sobrevivir será coronado como el **ganador de la 74ma edición de los Juegos del Hambre**.
 
 **Disclaimer: Se asegura el funcionamiento de programa solo en windows. (Leer sección Implementación ->Sonidos y música para más detalle).**
 
-## Funcionamiento del Juego##
+## Funcionamiento del Juego
 
 Una vez que se da inicio al juego, se deben generar los personajes. Se ingresa la cantidad de jugadores que desean jugar y sus respectivos nombres. A cada uno de ellos se les asignan características de manera aleatoria. En caso de existir, se podrán utilizar los últimos personajes cargados. Si no existen o no se desea repetirlos, se generarán nuevos personajes como se detalló anteriormente. 
 Cuando los personajes se han determinado, se producen las batallas. Se elige de manera aleatoria dos personajes que se enfrentarán en la arena. En cada batalla, uno de estos personajes se es derrotado y queda fuera de juego. El ganador continúa en competencia y recibirá una mejora de salud para seguir jugando. Este proceso se repite hasta que un solo tributo sobrevive. De esta manera, se lo declara ganador de *Los Juegos del Hambre: Simulador*.
