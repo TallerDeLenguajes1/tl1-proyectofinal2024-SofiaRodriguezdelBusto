@@ -7,15 +7,15 @@ namespace Juego
             Console.ForegroundColor = ConsoleColor.White;
             string jugadores;
             int cantidadDeJugadores;
-            Console.WriteLine("\nIngrese la cantidad de jugadores: ");
             do
             {
+                Console.WriteLine("\nIngrese la cantidad de jugadores: ");
                 jugadores = Console.ReadLine();
-                if(!int.TryParse(jugadores, out cantidadDeJugadores))
+                if(!int.TryParse(jugadores, out cantidadDeJugadores) || cantidadDeJugadores<=1)
                 {
                    Console.WriteLine("\nDebe ingresar un cantidad válida");
                 }
-            } while (!int.TryParse(jugadores, out cantidadDeJugadores));
+            }while(!int.TryParse(jugadores, out cantidadDeJugadores) || cantidadDeJugadores<=1);
 
             List<string> ListadoDeNombres =  new List<string>();
 

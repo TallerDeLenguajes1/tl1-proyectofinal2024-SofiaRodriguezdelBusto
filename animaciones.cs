@@ -35,10 +35,11 @@ namespace Juego
                 {
                     Console.Write(c);
                     Thread.Sleep(1000);
-                }
-                Console.Write(c);
-                Thread.Sleep(50);
-                
+                }else
+                {
+                    Console.Write(c);
+                    Thread.Sleep(50);
+                }    
             }
         }
         

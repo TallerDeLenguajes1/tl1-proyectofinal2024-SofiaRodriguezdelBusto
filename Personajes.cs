@@ -45,7 +45,7 @@ namespace Juego
 
         public int Ataque(Personaje atacante, Personaje defensor)
         {
-            const int ajuste = 500;
+            const int ajuste = 400;
             var semilla = Environment.TickCount;
             var random = new Random(semilla); 
             int efectividad = random.Next(1,101);

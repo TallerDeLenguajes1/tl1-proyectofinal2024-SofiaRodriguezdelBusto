@@ -6,6 +6,8 @@ namespace Juego
         {
             Batalla batalla = new Batalla();
             interfazGrafica.CentrarTexto($"Se encuentran {personaje1.Nombre} y {personaje2.Nombre} en la arena\nEs el momento de enfretarse y solo uno de ellos seguirá en competencia");
+            Console.ReadKey();
+            Console.Clear();
             Console.WriteLine("\n\n");
             Personaje aux;
             Personaje atacante = personaje1;
@@ -15,13 +17,12 @@ namespace Juego
             {
                 contadorDisputas++;
                 int danio = atacante.Ataque(atacante, defensor);
-                interfazGrafica.CentrarTexto($"Disputa {contadorDisputas}\n{atacante.Nombre} avanza hacia {defensor.Nombre} e intenta dejarlo fuera de competencia");
                 if(danio > atacante.MejorAtaque)
                 {
                     atacante.MejorAtaque = danio;
                 }
-                batalla.ElegirJugadaDeAtaque(danio);
-                interfazGrafica.CentrarTexto($"El daño provocado por el atacante es {danio}\nLa salud de los jugadores luego del ataque:\nSalud {atacante.Nombre}: {atacante.Salud}\nSalud {defensor.Nombre}: {defensor.Salud}");
+                string jugadaDeAtaque = batalla.ElegirJugadaDeAtaque(danio);
+                interfazGrafica.TextoCentradoConDecoracion($"Disputa {contadorDisputas}\n{atacante.Nombre} avanza hacia {defensor.Nombre} e intenta dejarlo fuera de competencia\n{jugadaDeAtaque}\nEl daño provocado por el atacante es {danio}\nLa salud de los jugadores luego del ataque:\nSalud {atacante.Nombre}: {atacante.Salud}\nSalud {defensor.Nombre}: {defensor.Salud}", contadorDisputas);
                 aux = atacante;
                 atacante = defensor;
                 defensor = aux;
@@ -42,7 +43,7 @@ namespace Juego
         }
 
 
-        public void ElegirJugadaDeAtaque(int danio)
+        public string ElegirJugadaDeAtaque(int danio)
         {
             string[] AtaquesFuertes = {
                 "Dispara su flecha y acierta en el pecho de su oponente generando un grave sangrado.",
@@ -71,13 +72,13 @@ namespace Juego
             var random = new Random(semilla); 
             if(danio > 40)
             {
-                interfazGrafica.CentrarTexto(AtaquesFuertes[random.Next(0,5)]);
+                return AtaquesFuertes[random.Next(0,5)];
             }else if (danio > 15)
             {
-                interfazGrafica.CentrarTexto(AtaquesMedios[random.Next(0,5)]);
+                return AtaquesMedios[random.Next(0,5)];
             }else
             {
-                interfazGrafica.CentrarTexto(AtaquesDebiles[random.Next(0,5)]);
+                return AtaquesDebiles[random.Next(0,5)];
             }
         }
     }

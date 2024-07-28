@@ -1,5 +1,7 @@
 
+using System.IO.Compression;
 using System.Media;
+using System.Reflection.PortableExecutable;
 
 
 namespace Juego
@@ -17,18 +19,44 @@ namespace Juego
             }
         }
         
-
-            public static string [] ObtenerTituloAsciiTxt(string ruta)
+        private static string ArmarBorde(int longitud, int repeticion)
+        {
+            string borde = "";
+            for (int i = 0; i < longitud+5; i++)
             {
-                string [] tituloAsciiArt = File.ReadAllLines(ruta);
-                return tituloAsciiArt;
+                if(repeticion%2 == 0)borde += "*";
+                else borde += "·";
             }
+            return borde;
+        }
+        public static void TextoCentradoConDecoracion(string texto, int repeticion)
+        {
+            string[] lineas = texto.Split("\n");
+            int longitudMaxima = lineas.Max(s => s.Length);
+            string borde = ArmarBorde(longitudMaxima, repeticion);
+            CentrarTexto(borde);
+            CentrarTexto(texto);
+            CentrarTexto(borde);
+        }
+        public static string [] ObtenerTituloAsciiTxt(string ruta)
+        {
+            string [] tituloAsciiArt;
+            if(File.Exists(ruta))
+            {
+                tituloAsciiArt = File.ReadAllLines(ruta);
+            }else
+            {
+                tituloAsciiArt = null;
+            }
+            return tituloAsciiArt;
+        }
     
         public static void MostrarInicioDelJuego()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             string[] title = ObtenerTituloAsciiTxt("Data/TituloAscii.txt");
-            Animacion.EfectoTemblorTitulo(title);
+            if(title != null)Animacion.EfectoTemblorTitulo(title);
+            else Animacion.EfectoTemblorTitulo(["LOS JUEGOS DEL HAMBRE"]);
             Console.Clear();
         }
         
@@ -125,21 +153,21 @@ namespace Juego
             Console.WriteLine(@"
             
                                                                
-                                                                            ██      ██                 
-                                                                        ██████      ██████                      
-                                                                    ██████████      ███████████                
-                                                                  ████████████      ████████████            
-                                                                ██████████████      ██████████████       
-                                                                 █████████████      █████████████         
-                                                               ███████████████ ████ ███████████████         
-                                                               ███████████████  ███ ███████████████       
-                                                               ████████████████████████████████████      
-                                                                ██████████████████████████████████       
-                                                                            ████  ████                 
-                                                                              ██  ██                     
-                                                                    ████ █    ██████    █ █████        
-                                                                       █████████████████████                          
-                                                                           ████████████                             
+                                                                             ██      ██                 
+                                                                         ██████      ██████                      
+                                                                     ██████████      ███████████                
+                                                                   ████████████      ████████████            
+                                                                 ██████████████      ██████████████       
+                                                                  █████████████      █████████████         
+                                                                ███████████████ ████ ███████████████         
+                                                                ███████████████  ███ ███████████████       
+                                                                ████████████████████████████████████      
+                                                                 ██████████████████████████████████       
+                                                                             ████  ████                 
+                                                                               ██  ██                     
+                                                                     ████ █    ██████    █ █████        
+                                                                        █████████████████████                          
+                                                                            ████████████                             
                
  
             ");  
@@ -150,7 +178,7 @@ namespace Juego
            SoundPlayer musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
            Console.WriteLine("\n");
            musicaGanadores.PlayLooping();
-           Thread.Sleep(1000);
+           Thread.Sleep(1500);
            CentrarTexto("Nuestros queridos tributos campeones de Panem son");
            int contador = 0;
            int pos = 0;
@@ -188,7 +216,6 @@ namespace Juego
             Thread.Sleep(2000);
             musicaGanadores.Stop();
         }
-        
 
     }
     
