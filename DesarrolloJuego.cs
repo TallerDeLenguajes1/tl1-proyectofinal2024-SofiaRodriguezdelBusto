@@ -1,6 +1,6 @@
 namespace Juego
 {
-    public class DesarrolloJuego
+    public class FuncionesDelJuego
     {
         public List<string> IngresoJugadores()
         {

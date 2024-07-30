@@ -12,13 +12,13 @@ namespace Juego
             {
                 case 0:
                     Console.Clear();
-                    DesarrolloJuego desarrolloJuego = new DesarrolloJuego();
-                    List<Personaje> ListadoDePersonajes = desarrolloJuego.ObtenerPersonajes();
+                    FuncionesDelJuego FuncionesDelJuego = new FuncionesDelJuego();
+                    List<Personaje> ListadoDePersonajes = FuncionesDelJuego.ObtenerPersonajes();
                     interfazGrafica.MostrarPersonajes(ListadoDePersonajes, "Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
                     var tiempoApi = Api.CrearCondicionesClimaticasConApi(); 
                     interfazGrafica.DescripcionArena(tiempoApi);
-                    Personaje ganador = desarrolloJuego.DesarrolloDeLasBatallas(ListadoDePersonajes);
-                    desarrolloJuego.AgregarGanadorAlHistorialDeGanadores(ganador);
+                    Personaje ganador = FuncionesDelJuego.DesarrolloDeLasBatallas(ListadoDePersonajes);
+                    FuncionesDelJuego.AgregarGanadorAlHistorialDeGanadores(ganador);
                     interfazGrafica.AnuncioGanador(ganador);
                     EjecutarJuego();
                     break;

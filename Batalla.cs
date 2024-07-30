@@ -8,7 +8,6 @@ namespace Juego
             interfazGrafica.CentrarTexto($"Se encuentran {personaje1.Nombre} y {personaje2.Nombre} en la arena\nEs el momento de enfretarse y solo uno de ellos seguirá en competencia");
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine("\n\n");
             Personaje aux;
             Personaje atacante = personaje1;
             Personaje defensor = personaje2;
@@ -16,7 +15,7 @@ namespace Juego
             while (personaje1.Salud > 0 && personaje2.Salud>0)
             {
                 contadorDisputas++;
-                int danio = atacante.Ataque(atacante, defensor);
+                int danio = atacante.Ataque(defensor);
                 if(danio > atacante.MejorAtaque)
                 {
                     atacante.MejorAtaque = danio;

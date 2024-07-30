@@ -43,13 +43,13 @@ namespace Juego
             Salud += 10;
         }
 
-        public int Ataque(Personaje atacante, Personaje defensor)
+        public int Ataque(Personaje defensor)
         {
             const int ajuste = 400;
             var semilla = Environment.TickCount;
             var random = new Random(semilla); 
             int efectividad = random.Next(1,101);
-            int ataque =  atacante.Destreza*atacante.Fuerza*atacante.PuntuacionPrevia;
+            int ataque =  Destreza*Fuerza*PuntuacionPrevia;
             int defensa = defensor.Armadura*defensor.Velocidad;
             int danioProvocado = (ataque*efectividad-defensa)/ajuste;
 
