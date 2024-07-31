@@ -54,7 +54,7 @@ namespace Juego
             }else
             {
 
-                interfazGrafica.MostrarPersonajes(archivoPersonajes.LeerPersonajes(nombreArchivo), "Los personajes cargados previamente son: ");
+                InterfazGrafica.MostrarPersonajes(archivoPersonajes.LeerPersonajes(nombreArchivo), "Los personajes cargados previamente son: ");
                 string textoMenu = "¿Desea repetir los personajes de la partida anterior?";
                 string[] opcionesMenu = ["Si", "No"];
                 Menu menuSeleccionPersonajes = new Menu(textoMenu, opcionesMenu);
@@ -72,7 +72,7 @@ namespace Juego
             return ListadoDePersonajes;
         }
         
-        
+
         public Personaje DesarrolloDeLasBatallas(List<Personaje> ListadoDePersonajes)
         {
             
@@ -90,7 +90,7 @@ namespace Juego
                 Batalla batalla = new Batalla();
                 Personaje tributoCaido = batalla.GeneradorDeBatalla(ListadoDePersonajes[indicePersonaje1],ListadoDePersonajes[indicePersonaje2]);
                 ListadoDePersonajes.Remove(tributoCaido);
-                interfazGrafica.MostrarTributoCaido(tributoCaido);
+                InterfazGrafica.MostrarTributoCaido(tributoCaido);
                 
             }
             return ListadoDePersonajes[0];

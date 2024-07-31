@@ -14,12 +14,12 @@ namespace Juego
                     Console.Clear();
                     FuncionesDelJuego FuncionesDelJuego = new FuncionesDelJuego();
                     List<Personaje> ListadoDePersonajes = FuncionesDelJuego.ObtenerPersonajes();
-                    interfazGrafica.MostrarPersonajes(ListadoDePersonajes, "Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
+                    InterfazGrafica.MostrarPersonajes(ListadoDePersonajes, "Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
                     var tiempoApi = Api.CrearCondicionesClimaticasConApi(); 
-                    interfazGrafica.DescripcionArena(tiempoApi);
+                    InterfazGrafica.DescripcionArena(tiempoApi);
                     Personaje ganador = FuncionesDelJuego.DesarrolloDeLasBatallas(ListadoDePersonajes);
                     FuncionesDelJuego.AgregarGanadorAlHistorialDeGanadores(ganador);
-                    interfazGrafica.AnuncioGanador(ganador);
+                    InterfazGrafica.AnuncioGanador(ganador);
                     EjecutarJuego();
                     break;
                 case 1:
@@ -28,10 +28,10 @@ namespace Juego
                     HistorialJson archivoGanadores = new HistorialJson();
                     if(archivoGanadores.Existe(nombreArchivo2))
                     {
-                        interfazGrafica.mostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
+                        InterfazGrafica.MostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
                     }else
                     {
-                        interfazGrafica.CentrarTexto("No se han encontrado ganadores históricos del juego");
+                        InterfazGrafica.CentrarTexto("No se han encontrado ganadores históricos del juego");
                         Thread.Sleep(2000);
                     }
                     EjecutarJuego();

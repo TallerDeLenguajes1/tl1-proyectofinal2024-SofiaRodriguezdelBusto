@@ -1,8 +1,8 @@
 ﻿using Juego;
 
 Console.Title ="Los Juegos del Hambre";
-interfazGrafica.MostrarInicioDelJuego();
-interfazGrafica.MostrarPresentacionEInstrucciones();
+InterfazGrafica.MostrarInicioDelJuego();
+InterfazGrafica.MostrarPresentacionEInstrucciones();
 Game.EjecutarJuego();
 
 

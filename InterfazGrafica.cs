@@ -6,7 +6,7 @@ using System.Reflection.PortableExecutable;
 
 namespace Juego
 {
-    class interfazGrafica
+    class InterfazGrafica
     {
         public static void CentrarTexto(string texto)
         {
@@ -176,7 +176,7 @@ namespace Juego
         }
 
 
-        public static void mostrarGanadores(List<HistorialDeGanadores> ganadores)
+        public static void MostrarGanadores(List<HistorialDeGanadores> ganadores)
         {
            SoundPlayer musicaGanadores = null;
            if(File.Exists("audio/musicaGanadores.wav"))

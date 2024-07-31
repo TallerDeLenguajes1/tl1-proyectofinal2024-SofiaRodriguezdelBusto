@@ -10,11 +10,5 @@ namespace Juego
             Fuerte,
             
         }
-
-        public class ConstructorDeTipos
-        {
-
-            
-        }
     
 }

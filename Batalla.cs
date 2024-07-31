@@ -5,7 +5,7 @@ namespace Juego
         public Personaje GeneradorDeBatalla(Personaje personaje1, Personaje personaje2)
         {
             Batalla batalla = new Batalla();
-            interfazGrafica.CentrarTexto($"Se encuentran {personaje1.Nombre} y {personaje2.Nombre} en la arena\nEs el momento de enfretarse y solo uno de ellos seguirá en competencia");
+            InterfazGrafica.CentrarTexto($"Se encuentran {personaje1.Nombre} y {personaje2.Nombre} en la arena\nEs el momento de enfretarse y solo uno de ellos seguirá en competencia");
             Console.ReadKey();
             Console.Clear();
             Personaje aux;
@@ -21,7 +21,7 @@ namespace Juego
                     atacante.MejorAtaque = danio;
                 }
                 string jugadaDeAtaque = batalla.ElegirJugadaDeAtaque(danio);
-                interfazGrafica.TextoCentradoConDecoracion($"Disputa {contadorDisputas}\n{atacante.Nombre} avanza hacia {defensor.Nombre} e intenta dejarlo fuera de competencia\n{jugadaDeAtaque}\nEl daño provocado por el atacante es {danio}\nLa salud de los jugadores luego del ataque:\nSalud {atacante.Nombre}: {atacante.Salud}\nSalud {defensor.Nombre}: {defensor.Salud}", contadorDisputas);
+                InterfazGrafica.TextoCentradoConDecoracion($"Disputa {contadorDisputas}\n{atacante.Nombre} avanza hacia {defensor.Nombre} e intenta dejarlo fuera de competencia\n{jugadaDeAtaque}\nEl daño provocado por el atacante es {danio}\nLa salud de los jugadores luego del ataque:\nSalud {atacante.Nombre}: {atacante.Salud}\nSalud {defensor.Nombre}: {defensor.Salud}", contadorDisputas);
                 aux = atacante;
                 atacante = defensor;
                 defensor = aux;

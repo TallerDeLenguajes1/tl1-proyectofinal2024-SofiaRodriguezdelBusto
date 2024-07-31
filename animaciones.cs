@@ -16,9 +16,9 @@ namespace Juego
                 Console.SetCursorPosition((Console.BufferWidth-title[0].Length)/2 + offsetX, 2);
                 foreach (var line in title)
                 {
-                    interfazGrafica.CentrarTexto(line);
+                    InterfazGrafica.CentrarTexto(line);
                 }
-                interfazGrafica.CentrarTexto("Presione enter para iniciar");
+                InterfazGrafica.CentrarTexto("Presione enter para iniciar");
                 Thread.Sleep(500);
                 
             }while(!Console.KeyAvailable || Console.ReadKey(true).Key != ConsoleKey.Enter);
