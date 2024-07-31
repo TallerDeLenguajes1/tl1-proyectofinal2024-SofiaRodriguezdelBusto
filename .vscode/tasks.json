@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "C:/Users/pc/TLI/tl1-proyectofinal2024-SofiaRodriguezdelBusto/JuegosDelHambre.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run",
+            "command": "cmd",
+            "type": "process",
+            "args": [
+                "/c",
+                "start",
+                "cmd",
+                "/c",
+                "dotnet run --project ${workspaceFolder}/JuegosDelHambre.csproj"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

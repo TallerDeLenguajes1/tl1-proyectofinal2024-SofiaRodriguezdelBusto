@@ -38,3 +38,7 @@ Al usar este comando, el uso de SoundPlayer sólo se admite en windows. De maner
 ### Menú
 
 Mi idea original consistía en hacer un menú de opciones que se maneje por teclado con las flechas y seleccionar la opción con la tecla enter para de esta manera evitar que el usuario tenga que ingresar la opción del menú por pantalla y evitar sus controles pertinentes. Sin embargo, como no conocía como hacerlo, busqué un video explicativo en youtube https://youtu.be/YyD1MRJY0qI?si=KJ4SSNeIMKvm_H8x e implementé mi menú guiandome de ese código y haciendo modificaciones estéticas de acuerdo a como venía realizando mi juego.
+
+## Ejecución del código
+
+Debido a la forma en la que quería disponer la información de la pantalla decidí modificar los archivos launch.json y tasks.json de manera que el juego siempre se ejecute en la consola externa ya que en la proporcionada por el visual studio code existían limitaciones de tamaño. Por esto modifiqué el archivo .gitignore inicial para que los archivos mencionados se suban al repositorio y en caso de que alguien quiera clonarlo y trabajar con el mismo, se mantenga la configuración.
