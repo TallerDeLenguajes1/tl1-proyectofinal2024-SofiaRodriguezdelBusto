@@ -14,8 +14,6 @@ namespace Juego
                 
             return ListaDePersonajes;
         }
-    
-
         public Personaje CrearPersonaje(string nombre)
         {
             var semilla = Environment.TickCount;

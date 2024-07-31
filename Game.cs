@@ -31,7 +31,8 @@ namespace Juego
                         interfazGrafica.mostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
                     }else
                     {
-                        Console.WriteLine("No se han encontrado ganadores históricos del juego");
+                        interfazGrafica.CentrarTexto("No se han encontrado ganadores históricos del juego");
+                        Thread.Sleep(2000);
                     }
                     EjecutarJuego();
                     break;

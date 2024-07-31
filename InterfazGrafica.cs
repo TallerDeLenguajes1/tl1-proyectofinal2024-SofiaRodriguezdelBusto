@@ -137,9 +137,12 @@ namespace Juego
         }
         public static void MostrarTributoCaido(Personaje tributoCaido)
         {
-            SoundPlayer sonidoCanion = new SoundPlayer("audio/audioAnuncioCaido.wav");
-            sonidoCanion.Play();
-            Thread.Sleep(500);
+            if(File.Exists("audio/audioAnuncioCaido.wav"))
+            {            
+                SoundPlayer sonidoCanion = new SoundPlayer("audio/audioAnuncioCaido.wav");
+                sonidoCanion.Play();
+                Thread.Sleep(500);
+            }
             MostrarLogoCapitolio();
             CentrarTexto($"El capitolio anuncia la caida del tributo {tributoCaido.Nombre}");
             Console.SetCursorPosition(1, 1);
@@ -172,12 +175,17 @@ namespace Juego
             ");  
         }
 
+
         public static void mostrarGanadores(List<HistorialDeGanadores> ganadores)
         {
-           SoundPlayer musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
-           Console.WriteLine("\n");
-           musicaGanadores.PlayLooping();
-           Thread.Sleep(1500);
+           SoundPlayer musicaGanadores = null;
+           if(File.Exists("audio/musicaGanadores.wav"))
+           {
+                musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
+                Console.WriteLine("\n");
+                musicaGanadores.PlayLooping();
+                Thread.Sleep(1500);
+           }
            CentrarTexto("Nuestros queridos tributos campeones de Panem son");
            int contador = 0;
            int pos = 0;
@@ -202,18 +210,29 @@ namespace Juego
                 }
            }
            Console.ReadKey();
-           musicaGanadores.Stop();
+           if (File.Exists("audio/musicaGanadores.wav"))
+           {
+                musicaGanadores.Stop();
+           }
            Console.Clear();
         }
         public static void AnuncioGanador(Personaje ganador)
         {
-            SoundPlayer musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
-            musicaGanadores.PlayLooping();
-            Thread.Sleep(1000);
+            SoundPlayer musicaGanadores = null;
+            if(File.Exists("audio/musicaGanadores.wav"))
+            {
+                musicaGanadores = new SoundPlayer("audio/musicaGanadores.wav");
+                Console.WriteLine("\n");
+                musicaGanadores.PlayLooping();
+                Thread.Sleep(1000);
+            }
             MostrarLogoCapitolio();
             Animacion.EscribirTextoAnimado($"El ganador de la 74ma Edición de los Juegos del Hambre es: {ganador.Nombre}", true);
             Thread.Sleep(2000);
-            musicaGanadores.Stop();
+            if (File.Exists("audio/musicaGanadores.wav"))
+            {
+                musicaGanadores.Stop();
+            }
         }
 
     }
