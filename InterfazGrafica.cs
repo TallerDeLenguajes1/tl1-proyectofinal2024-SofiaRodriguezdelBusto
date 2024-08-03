@@ -135,6 +135,22 @@ namespace Juego
             Console.ReadKey();
             Console.Clear();
         }
+
+        public static void MostrarTitulosDeAnunciosDeBatallas()
+        {
+            string[] title = ObtenerTituloAsciiTxt("Data/TituloDeAnuncios.txt");
+            if(title != null)
+            {
+                foreach (var linea in title)
+                {
+                    CentrarTexto(linea);
+                }
+            }
+            else
+            {
+                CentrarTexto("Panem News");
+            }
+        }
         public static void MostrarTributoCaido(Personaje tributoCaido)
         {
             if(File.Exists("audio/audioAnuncioCaido.wav"))
@@ -174,6 +190,7 @@ namespace Juego
  
             ");  
         }
+
 
 
         public static void MostrarGanadores(List<HistorialDeGanadores> ganadores)

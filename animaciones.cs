@@ -19,6 +19,8 @@ namespace Juego
                     InterfazGrafica.CentrarTexto(line);
                 }
                 InterfazGrafica.CentrarTexto("Presione enter para iniciar");
+                Console.WriteLine("\n\n");
+                InterfazGrafica.CentrarTexto("SE RECOMIENDA UTILIZAR LA PANTALLA COMPLETA PARA DISFRUTAR DEL JUEGO DE UNA MEJOR MANERA");
                 Thread.Sleep(500);
                 
             }while(!Console.KeyAvailable || Console.ReadKey(true).Key != ConsoleKey.Enter);

@@ -16,6 +16,9 @@
     <None Update="Data\TituloAscii.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Data\TituloDeAnuncios.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Data\HistorialDeGanadores.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -21,6 +21,7 @@ namespace Juego
                     atacante.MejorAtaque = danio;
                 }
                 string jugadaDeAtaque = batalla.ElegirJugadaDeAtaque(danio);
+                InterfazGrafica.MostrarTitulosDeAnunciosDeBatallas();
                 InterfazGrafica.TextoCentradoConDecoracion($"Disputa {contadorDisputas}\n{atacante.Nombre} avanza hacia {defensor.Nombre} e intenta dejarlo fuera de competencia\n{jugadaDeAtaque}\nEl daño provocado por el atacante es {danio}\nLa salud de los jugadores luego del ataque:\nSalud {atacante.Nombre}: {atacante.Salud}\nSalud {defensor.Nombre}: {defensor.Salud}", contadorDisputas);
                 aux = atacante;
                 atacante = defensor;
