@@ -41,7 +41,7 @@ namespace Juego
             return ListadoDePersonajes;
 
         }
-        public List<Personaje> ObtenerPersonajes()
+        public List<Personaje> ObtenerListadoDePersonajes()
         {
             string nombreArchivo = "Personajes.json";
             PersonajesJson archivoPersonajes = new PersonajesJson();
@@ -98,9 +98,9 @@ namespace Juego
 
         public void AgregarGanadorAlHistorialDeGanadores(Personaje ganador)
         {
-            string nombreArchivo2 = "HistorialDeGanadores.json";
+            string nombreArchivoHistorial = "HistorialDeGanadores.json";
             HistorialJson archivoGanadores = new HistorialJson();
-            archivoGanadores.GuardarGanador(ganador, nombreArchivo2);
+            archivoGanadores.GuardarGanador(ganador, nombreArchivoHistorial);
         }
 
     }

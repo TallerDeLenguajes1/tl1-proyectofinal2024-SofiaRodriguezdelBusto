@@ -5,19 +5,19 @@ namespace Juego
     {
         public List<Personaje> GeneradorDePersonajes(List<string> Nombres)
         {
+            var semilla = Environment.TickCount;
+            var random = new Random(semilla); 
             List<Personaje> ListaDePersonajes = new List<Personaje>();
             foreach (var nombre in Nombres)
             {
-                Personaje personaje = CrearPersonaje(nombre);
+                Personaje personaje = CrearPersonaje(nombre, random);
                 ListaDePersonajes.Add(personaje);
             }
                 
             return ListaDePersonajes;
         }
-        public Personaje CrearPersonaje(string nombre)
+        public Personaje CrearPersonaje(string nombre, Random random)
         {
-            var semilla = Environment.TickCount;
-            var random = new Random(semilla); 
             Personaje personaje = new Personaje();
             personaje.Nombre = nombre;
             personaje.Distrito = random.Next(1,12);

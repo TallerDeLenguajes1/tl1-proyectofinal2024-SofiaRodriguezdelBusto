@@ -250,6 +250,7 @@ namespace Juego
             {
                 musicaGanadores.Stop();
             }
+            Console.ReadKey();
         }
 
     }

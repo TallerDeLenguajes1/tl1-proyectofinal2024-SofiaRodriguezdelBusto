@@ -13,7 +13,7 @@ namespace Juego
                 case 0:
                     Console.Clear();
                     FuncionesDelJuego FuncionesDelJuego = new FuncionesDelJuego();
-                    List<Personaje> ListadoDePersonajes = FuncionesDelJuego.ObtenerPersonajes();
+                    List<Personaje> ListadoDePersonajes = FuncionesDelJuego.ObtenerListadoDePersonajes();
                     InterfazGrafica.MostrarPersonajes(ListadoDePersonajes, "Los personajes que se enfretarán en esta edición de los Juegos del Hambre son: ");
                     var tiempoApi = Api.CrearCondicionesClimaticasConApi(); 
                     InterfazGrafica.DescripcionArena(tiempoApi);
@@ -24,11 +24,11 @@ namespace Juego
                     break;
                 case 1:
                     Console.Clear();
-                    string nombreArchivo2 = "HistorialDeGanadores.json";
+                    string nombreArchivoHistorial = "HistorialDeGanadores.json";
                     HistorialJson archivoGanadores = new HistorialJson();
-                    if(archivoGanadores.Existe(nombreArchivo2))
+                    if(archivoGanadores.Existe(nombreArchivoHistorial))
                     {
-                        InterfazGrafica.MostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivo2));
+                        InterfazGrafica.MostrarGanadores(archivoGanadores.LeerGanadores(nombreArchivoHistorial));
                     }else
                     {
                         InterfazGrafica.CentrarTexto("No se han encontrado ganadores históricos del juego");
